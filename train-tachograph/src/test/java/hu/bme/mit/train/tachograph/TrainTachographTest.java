@@ -4,22 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import hu.bme.mit.train.tachograph.TrainTachograph;
+
 public class TrainTachographTest {
 
 	@Test
-	public void OverridingJoystickPosition_IncreasesReferenceSpeed() {
-		sensor.overrideSpeedLimit(10);
-
-		Assert.assertEquals(0, controller.getReferenceSpeed());
-		
-		user.overrideJoystickPosition(5);
-
-		controller.followSpeed();
-		Assert.assertEquals(5, controller.getReferenceSpeed());
-		controller.followSpeed();
-		Assert.assertEquals(10, controller.getReferenceSpeed());
-		controller.followSpeed();
-		Assert.assertEquals(10, controller.getReferenceSpeed());
+	public void test() {
+		TrainTachograph tt = new TrainTachograph();
+		Assert.assertEquals(tt.getLength(), 0);
 	}
 
 	
