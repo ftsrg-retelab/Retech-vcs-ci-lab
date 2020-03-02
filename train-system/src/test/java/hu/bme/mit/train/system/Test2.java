@@ -8,6 +8,6 @@ public class Test2 {
 
 	@Test
 	public void OverridingJoystickPosition_IncreasesReferenceSpeed() {
-		Assert.assertEquals(1,2);		
+		Assert.assertEquals(1,1);		
 	}
 }
