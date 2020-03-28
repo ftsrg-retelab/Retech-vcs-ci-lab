@@ -1,12 +1,23 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
+import java.util.concurrent.*;
 
 public class TrainControllerImpl implements TrainController {
 
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+
+	public TrainControllerImpl() {
+		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+		Runnable referenceSpeedSetter = new Runnable() {
+			public void run() {
+				TrainControllerImpl.this.followSpeed();
+			}
+		};
+		scheduler.scheduleAtFixedRate(referenceSpeedSetter, 0, 10, TimeUnit.MILLISECONDS); // every 10 ms
+	}
 
 	@Override
 	public void followSpeed() {
