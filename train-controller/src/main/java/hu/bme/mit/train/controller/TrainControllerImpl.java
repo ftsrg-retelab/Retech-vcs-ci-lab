@@ -1,7 +1,9 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
-import java.util.concurrent.*;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class TrainControllerImpl implements TrainController {
 
@@ -11,7 +13,7 @@ public class TrainControllerImpl implements TrainController {
 
 	public TrainControllerImpl() {
 		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		Runnable referenceSpeedSetter = new Runnable() {
+		final Runnable referenceSpeedSetter = new Runnable() {
 			public void run() {
 				TrainControllerImpl.this.followSpeed();
 			}
