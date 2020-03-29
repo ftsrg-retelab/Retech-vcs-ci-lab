@@ -55,9 +55,11 @@ public class TrainSensorTest {
         TrainSensor trainSensor = new TrainSensorImpl(trainController, trainUser);
 
         trainSensor.overrideSpeedLimit(firstSpeed);
+        Assert.assertEquals(firstSpeed, trainSensor.getSpeedLimit());
         if(alarmAfterFirst) verify(trainUser).setAlarmState(true);
         else {
             trainSensor.overrideSpeedLimit(sercondSpeed);
+            Assert.assertEquals(sercondSpeed, trainSensor.getSpeedLimit());
             if(alarmAfterSecond) verify(trainUser).setAlarmState(true);
         }
     }
