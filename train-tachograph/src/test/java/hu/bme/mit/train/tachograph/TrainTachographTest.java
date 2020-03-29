@@ -11,7 +11,7 @@ public class TrainTachographTest {
 	@Test
 	public void test() {
 		TrainTachograph tt = new TrainTachograph();
-		Assert.assertEquals(tt.getLength(), 0);
+		Assert.assertEquals(0, tt.getLength());
 	}
 
 	
