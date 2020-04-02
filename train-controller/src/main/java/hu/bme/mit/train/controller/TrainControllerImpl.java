@@ -8,6 +8,19 @@ public class TrainControllerImpl implements TrainController {
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
 
+	public TrainControllerImpl(){
+		ExecutorService service = Executors.newSingleThreadExecutor();
+
+		try {
+			Runnable r = new Runnable() {
+				@Override
+				public void run() {
+					followSpeed();
+				}
+			};
+		}
+
+
 	@Override
 	public void followSpeed() {
 		if (referenceSpeed < 0) {
